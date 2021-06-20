@@ -1,0 +1,25 @@
+export const SET_LOADER = 'SET_LOADER'
+export const SET_AUTHORIZED_USER = 'SET_AUTHORIZED_USER'
+export const INIT_APPLICATION = 'INIT_APPLICATION'
+export const SET_TITLE = 'SET_TITLE'
+export const CLEAR_TITLE = 'CLEAR_TITLE'
+export const SET_BUTTON = 'SET_BUTTON'
+export const CLEAR_BUTTONS = 'CLEAR_BUTTONS'
+export const SET_BREADCRUMBS = 'SET_BREADCRUMBS'
+export const CLEAR_BREADCRUMBS = 'CLEAR_BREADCRUMBS'
+
+export const ADD_ALERT = 'ADD_ALERT'
+export const SET_ALERT = 'SET_ALERT'
+export const REMOVE_ALERT = 'REMOVE_ALERT'
+export const CLEAR_ALERTS = 'CLEAR_ALERTS'
+
+export const ADD_FLASH = 'ADD_FLASH'
+export const REMOVE_FLASH = 'REMOVE_FLASH'
+export const CLEAR_FLASHES = 'CLEAR_FLASHES'
+
+export const SET_ERROR = 'SET_ERROR'
+export const CLEAR_ERROR = 'CLEAR_ERROR'
+export const CLEAR_ALL = 'CLEAR_ALL'
+
+export const INCREMENT = 'INCREMENT'
+export const ASYNC_INCREMENT = 'ASYNC_INCREMENT'

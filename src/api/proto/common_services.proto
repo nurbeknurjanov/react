@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package tutorial;
+import "google/protobuf/empty.proto";
+import "common_messages.proto";
+import "users_messages.proto";
+
+service Common{
+  rpc Login     (LoginPost) returns           (TokenResponse) {};
+  rpc Auth     (google.protobuf.Empty) returns      (User) {};
+  rpc GetAccessToken     (google.protobuf.Empty) returns  (TokenResponse) {};
+}

@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package tutorial;
+
+import "google/protobuf/empty.proto";
+import "users_messages.proto";
+
+service Users{
+  rpc GetUser     (UserRequest) returns           (User) {};
+  rpc CreateUser  (UserPost) returns           (User) {};
+  rpc UpdateUser  (UserPostUpdate) returns           (User) {};
+  rpc DeleteUser  (UserRequest) returns           (google.protobuf.Empty) {};
+  rpc GetUsersStream    (google.protobuf.Empty) returns (stream User) {};
+  rpc GetUsers    (UsersRequest) returns (UsersResponse) {};
+}

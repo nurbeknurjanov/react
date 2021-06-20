@@ -1,0 +1,32 @@
+{
+  "name": "Имя",
+  "age": "Возраст",
+  "email": "Почта",
+  "password": "Пароль",
+  "submit": "Отправить",
+  "login": "Вход",
+  "user": {
+    "create": "Создание пользователя"
+  },
+
+  "validate": {
+    "required": "${path} объязательное поле",
+    "string": {
+      "min": "${path} должно содержать минимум ${min} символов"
+    }
+  },
+  "amount_of_bananas_0": "{{count}} банан",
+  "amount_of_bananas_1": "{{count}} банана",
+  "amount_of_bananas_2": "{{count}} бананов",
+
+  "hello": "Меня зовут {{user.name}}",
+
+  "textWithHtml": "Привет, мое имя <b>{{name}}</b>, и это моя картинка {{- myImg}}",
+
+  "user create": "Создание пользователя",
+  "what": "Это <1>транс</1> <1>второй транс</1> <strong>третий транс</strong>",
+  "Hi my<1>baby</1>": "Привет дарлинг",
+
+  "create": "Создать",
+  "status": "Статус"
+}
