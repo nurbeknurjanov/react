@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package tutorial;
+
+import "common_messages.proto";
+
+enum UserStatus {
+  ZERO_VALUE_REQUIRED = 0;
+  Approved_User = 1;
+  banned_user = 2;
+}
+
+message UserRequest {
+  int32 id = 1;
+}
+message User {
+  int32 id = 1;
+  string name = 2;
+  string email = 3;
+  string password = 4;
+  int32 age = 5;
+  UserStatus status = 6;
+}
+message UserPost {
+  string name = 2;
+  string email = 3;
+  string password = 4;
+  int32 age = 5;
+  UserStatus status = 6;
+}
+message UserPostUpdate {
+  int32 id = 1;
+  UserPost post = 2;
+}
+
+
+message UsersRequest {
+  FilterParams filter_params = 1;
+  PaginationRequest pagination_params = 2;
+}
+message UsersResponse {
+  repeated User users = 1;
+  PaginationResponse pagination_params = 2;
+}
+message FilterParams{
+  string name = 1;
+}

@@ -1,0 +1,1 @@
+export const GET_USERS_ASYNC = 'GET_USERS_ASYNC';

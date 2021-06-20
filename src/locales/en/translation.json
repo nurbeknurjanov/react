@@ -1,0 +1,33 @@
+{
+  "name": "Name",
+  "age": "Age",
+  "email": "Email",
+  "password": "Password",
+  "submit": "Submit",
+  "login": "Login",
+  "user": {
+    "create": "Create user"
+  },
+
+  "validate": {
+    "required": "${path} is a required field",
+    "string": {
+      "min": "${path} must be at least ${min} characters"
+    }
+  },
+
+  "amount_of_bananas": "{{count}} banana",
+  "amount_of_bananas_plural": "{{count}} bananas",
+
+  "hello": "I am {{user.name}}",
+
+  "textWithHtml": "Hi, my name is <b>{{name}}</b>, and this is my image {{- myImg}}",
+
+
+  "user create": "Create user",
+  "what": "This is a  <1>Trans</1> <1>second Trans</1> <strong>third Trans</strong>",
+  "Hi my<1>baby</1>": "Привет дарлинг",
+
+  "create": "Create",
+  "status": "Status"
+}
