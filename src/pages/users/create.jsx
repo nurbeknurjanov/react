@@ -10,7 +10,7 @@ import {
     setAlert,
     addButton, addFlash,
     setBreadcrumbs,
-    setTitle
+    setTitle, clearAll
 } from "pages/duck";
 import {connect} from "react-redux";
 import {createUser} from "api/users";
@@ -69,6 +69,7 @@ let UserCreate = ({t, dispatch, history})=>{
             {label:t('users'), to:'/users'},
             title
         ]));
+        return ()=>dispatch(clearAll());
     },[dispatch, title]);
 
     const schema = Yup.object().shape({

@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useLayoutEffect, useState, useCallback} from 'react';
 import {connect} from "react-redux";
 import {
-    addButton, addFlash, endLoading,
+    addButton, addFlash, clearAll, endLoading,
     setBreadcrumbs, setError,
     setTitle, startLoading
 } from "../duck";
@@ -279,9 +279,7 @@ let UsersContainer = ({location, d, t})=>{
     const title = t('users');
     useLayoutEffect(()=>{
         d(setTitle(title));
-        d(addButton(<Button variant="contained"
-                            color="success"
-                            startIcon={<AddIcon/>}
+        d(addButton(<Button variant="contained" color="success" startIcon={<AddIcon/>}
                             component={
                                 React.forwardRef((props, ref) => <Link {...props} ref={ref} to={'/users/create'} />)
                             }
@@ -289,6 +287,7 @@ let UsersContainer = ({location, d, t})=>{
         d(setBreadcrumbs([
             title
         ]));
+        return ()=>d(clearAll());
     },[d, title]);
 
     const [users, setUsers] = useState([]);
