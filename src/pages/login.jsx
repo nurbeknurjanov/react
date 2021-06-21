@@ -60,7 +60,7 @@ let Login = ({t, dispatch, history, location})=>{
             d(clearTitle());
             d(clearBreadcrumbs());
         }
-    },[dispatch, history]);
+    },[dispatch, history, t]);
 
     return <div>
 

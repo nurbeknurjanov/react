@@ -66,7 +66,7 @@ let ProfileMenuButton = ({name, dispatch}) => {
 
 const headerStyle = theme=>({
     buttonsContainer:{
-        '& > button + button':{
+        '& > * + *':{
             marginLeft: theme.spacing(1)
         }
     }
