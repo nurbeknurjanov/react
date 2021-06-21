@@ -31,7 +31,7 @@ let LanguageSwitcher = (  {location, history} )=>{
 let LoginButton = ({t})=><Button to='/login' component={RouterLink} variant='contained' color='success' children={t('login')}/>;
 LoginButton = withNamespaces()(LoginButton);
 
-let ProfileMenuButton = ({name, dispatch}) => {
+let ProfileMenuButton = ({authorizedUser, dispatch}) => {
     const inputRef = React.useRef(null);
     const [open, setOpen] = React.useState(false);
 
@@ -47,8 +47,8 @@ let ProfileMenuButton = ({name, dispatch}) => {
 
     return (
         <>
-            <Button  ref={inputRef} onClick={handleClick} variant='outlined' color='primary'>
-                {name}
+            <Button ref={inputRef} onClick={handleClick} variant='outlined' color='primary'>
+                {authorizedUser.name}
             </Button>
             <Menu
                 id="simple-menu"
@@ -57,7 +57,7 @@ let ProfileMenuButton = ({name, dispatch}) => {
                 open={open}
                 onClose={handleClose}
             >
-                <MenuItem>My account</MenuItem>
+                <MenuItem component={RouterLink} to={'/users/'+authorizedUser.id}>My account</MenuItem>
                 <MenuItem onClick={logout}>Logout</MenuItem>
             </Menu>
         </>
@@ -111,7 +111,7 @@ let Header = ({authorizedUser, className})=>{
         </MuiLink>
         <div className={className}>
             {!authorizedUser && <LoginButton>Login</LoginButton>}
-            {authorizedUser && <ProfileMenuButton name={authorizedUser.name} />}
+            {authorizedUser && <ProfileMenuButton authorizedUser={authorizedUser} />}
             <LanguageSwitcher/>
         </div>
     </StyledPaper>;

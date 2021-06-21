@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import {fade} from "@material-ui/core/styles/colorManipulator";
 import {theme} from "styles/material_styles";
 import {withRouter} from "react-router";
+import {withNamespaces} from "react-i18next";
 
 //eslint-disable-next-line no-extend-native
 String.prototype.capitalize = function() {
@@ -74,9 +75,9 @@ colors.forEach(color=>{
 
 
 // HOC method
-const HOCMuiButton = withStyles(theme=>theme.buttonStyles)(({ classes, color, ...props }) =>{
+const HOCMuiButton = withStyles(theme=>theme.buttonStyles)(({ classes, color, buttonRef, ...props }) =>{
     if(['primary', 'secondary', 'default'].includes(color))
-        return <Button {...props} color={color} />;
+        return <Button {...props} color={color} ref={buttonRef}/>;
 
     const classNames = {};
     if(props.variant && color){
@@ -84,19 +85,20 @@ const HOCMuiButton = withStyles(theme=>theme.buttonStyles)(({ classes, color, ..
         if(className)
             classNames[props.variant] = className;
     }
-    return <Button classes={classNames} {...props} />;
+    return <Button classes={classNames} {...props} ref={buttonRef} />;
 });
 
 HOCMuiButton.propTypes = {
     color: PropTypes.oneOf(['success', 'danger', 'error', 'warning', 'info', 'neutral',
         'primary', 'secondary', 'default']),
 }
+const HOCMuiButtonForwardRef = React.forwardRef((props, ref)=><HOCMuiButton {...props} buttonRef={ref}/>)
+export default HOCMuiButtonForwardRef;
 
-export default HOCMuiButton;
 
-
-export let BackButton = ({history})=><HOCMuiButton onClick={()=>history.goBack()} variant='outlined' color='info'>Back</HOCMuiButton>;
+export let BackButton = ({history, t})=><HOCMuiButton onClick={()=>history.goBack()} variant='outlined' color='info'>{t('Back')}</HOCMuiButton>;
 BackButton = withRouter(BackButton);
+BackButton = withNamespaces()(BackButton);
 
 
 

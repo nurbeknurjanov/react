@@ -9,7 +9,7 @@ import Login from "../../pages/login";
 import Simple from "../../pages/simple";
 import Test from "../../pages/test";
 import {Loading, LoadingContainer} from "../standard/loading";
-import Users from "../../pages/users/index_clean";
+import Users from "../../pages/users";
 import UserView from "../../pages/users/view";
 import {ProtectedRoute, GuestRoute} from "components/standard/route";
 import {withRouter} from "react-router-dom";

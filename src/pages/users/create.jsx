@@ -67,13 +67,13 @@ const initialValues = {
 let UserCreate = ({t, dispatch, history})=>{
 
     useLayoutEffect(()=>{
-        dispatch(setTitle('Create User'));
+        dispatch(setTitle(t('user.create')));
         dispatch(addButton(<BackButton/>));
         dispatch(setBreadcrumbs([
-            {label:'Users', to:'/users'},
-            'Create User'
+            {label:t('users'), to:'/users'},
+            t('user.create')
         ]));
-    },[dispatch]);
+    },[dispatch, t]);
 
     const schema = Yup.object().shape({
         /*name: Yup.string()
