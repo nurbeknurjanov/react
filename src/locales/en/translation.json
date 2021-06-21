@@ -1,4 +1,6 @@
 {
+  "home": "Home",
+  "users": "Users",
   "name": "Name",
   "age": "Age",
   "email": "Email",

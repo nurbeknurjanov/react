@@ -16,11 +16,9 @@ const useStyles = makeStyles(theme => ({
     },
     paper: {
         padding: theme.spacing(1),
-        //color: theme.palette.text.secondary,
     },
     cardContainer: {
         padding: theme.spacing(1),
-        //color: theme.palette.text.secondary,
     },
 }));
 
@@ -29,9 +27,6 @@ const Main = ()=>{
 
     return <Grid container spacing={3} component={'main'} className={classes.root}>
         <Grid item sm={3} xs={12} component='section' >
-            {/*<Paper className={classes.paper} >
-                <Sidebar/>
-            </Paper>*/}
             <Card>
                 <CardContent className={classes.cardContainer}>
                     <Sidebar/>

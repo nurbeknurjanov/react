@@ -7,7 +7,6 @@ import {connect} from "react-redux";
 import {globalContext} from "constants/contexts";
 import {deleteCookie, getCookie, setCookie} from "helper/cookie";
 import {setAuthorizedUserAction, initApplication as initApplicationAction, addFlash} from "pages/duck";
-import {withRouter} from "react-router";
 import ErrorHandler from "components/standard/error_handler";
 import {auth, getAccessToken as getAccessTokenApi} from "api/common";
 import awaitToJs from "await-to-js";
@@ -38,7 +37,6 @@ class Base extends React.PureComponent
         });
     }
 
-    //return function
     async getAccessToken(refreshToken){
         const {dispatch} = this.props;
         const [err, accessToken] = await awaitToJs(getAccessTokenApi(refreshToken));
@@ -54,7 +52,6 @@ class Base extends React.PureComponent
     }
 
 
-    //dispatch function
     async setAuthorizedUser(accessToken){
         const {dispatch} = this.props;
         const [err, user] = await awaitToJs(auth(accessToken));
@@ -66,7 +63,6 @@ class Base extends React.PureComponent
         dispatch(setAuthorizedUserAction(user));
     }
 
-    //dispatch function
     async initApplication(){
         const {dispatch} = this.props;
 
@@ -127,7 +123,5 @@ Base = connect((state)=>{
         init:state.common.init,
     }
 })(Base);
-
-Base = withRouter(Base);
 
 export default Base;

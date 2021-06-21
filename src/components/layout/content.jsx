@@ -6,7 +6,6 @@ import Home from "../../pages/home";
 
 import Context from "../../pages/tutorial/context";
 import Login from "../../pages/login";
-import NestedComponent from "../tutorial/nested";
 import Simple from "../../pages/simple";
 import Test from "../../pages/test";
 import {Loading, LoadingContainer} from "../standard/loading";
@@ -17,9 +16,7 @@ import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import {globalContext} from "constants/contexts";
 import Mui from 'pages/mui';
-//import UserCreate from "../../pages/users/create";
 //const UserCreate = React.lazy(() => import("../../pages/users/create"));
-
 const UserCreate = React.lazy( () => {
     return new Promise(r=>{
         setTimeout(()=>{
@@ -36,6 +33,7 @@ let Content = ({dispatch, commonError, location, history})=>{
 
     if(commonError)
         return <Error error={commonError} />
+
     //всегда работает, потому что идет как ЧИСТЫЙ компонент в ЧИЛДРЕНЕ
     //совпадает или не совпадает без разницы
     /*<Route path="/simple" children={({history, location, match, })=>{
@@ -54,7 +52,7 @@ let Content = ({dispatch, commonError, location, history})=>{
                 <Route path="/another" component={({history, location, match})=> {
                     return 'Another Component'
                 }} />
-                <Route path="/nested" component={NestedComponent} />
+
                 <Route path="/sidebar" children={'Sidebar Component'} />{/*можно, потому что как рендер*/}
                 <Route path="/context" component={Context} />
 

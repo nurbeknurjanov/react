@@ -11,12 +11,10 @@ class ErrorHandler extends React.Component {
     }
 
     static getDerivedStateFromError(error) {
-        // Обновить состояние с тем, чтобы следующий рендер показал запасной UI.
         return { hasError: true, error };
     }
 
     componentDidCatch(error, errorInfo) {
-        // Можно также сохранить информацию об ошибке в соответствующую службу журнала ошибок
     }
 
     render() {

@@ -30,23 +30,6 @@ export const useLanguageToUrl = (to)=>{
     return addLanguageToUrl(to, language);
 }
 
-
-
-/*
-LinkCleanNotNeededProps.propTypes = {
-    to: PropTypes.oneOfType([
-        PropTypes.string.isRequired,
-        //PropTypes.object,
-        PropTypes.shape({
-            pathname: PropTypes.string.isRequired,
-        })
-    ]),
-    //element:PropTypes.element //<input />, or <ReactComponent/>
-    //element:PropTypes.elementType //ReactComponent
-};
-*/
-
-
 export const Link = React.forwardRef(({to, ...other}, ref) => {
     const url = useLanguageToUrl(to ? to: '');
     return <RouterLink {...other} to={url} ref={ref} />;

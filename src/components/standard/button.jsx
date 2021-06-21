@@ -1,5 +1,4 @@
 import React from "react";
-//import {Button as ButtonStyled} from 'styles/styled_components';
 import {withStyles} from "@material-ui/core/styles";
 import {Button} from "@material-ui/core";
 import PropTypes from 'prop-types';
@@ -73,26 +72,8 @@ colors.forEach(color=>{
     theme.buttonStyles['text'+ color.capitalize()] = textStyle;
 });
 
-// hook method
-/*const useStyles = makeStyles(theme=>theme.buttonStyles);
-export const HookMuiButton = ({color, ...other}) =>{
-    const classes = useStyles({color});
-    return <Button classes={classes} {...other} />;
-    //return <Button classes={{root:classes.root, label: 'myLabel'}} {...other} />;
-};*/
 
-//const StyledMuiButton1 = styled(({color, ...other})=><Button {...other} />)(theme.buttonStyles.root);
-/*export const StyledMuiButton = styled(({color, className, ...other})=>{
-    return <Button classes={{root:className}} {...other} />;
-})(
-    ({theme, color, ...other})=>{
-        const styles = theme.buttonStyles.root;
-        const background = styles.background({color});
-        const boxShadow = styles.boxShadow({color});
-        return {...styles, background, boxShadow};
-    }
-);*/
-
+// HOC method
 const HOCMuiButton = withStyles(theme=>theme.buttonStyles)(({ classes, color, ...props }) =>{
     if(['primary', 'secondary', 'default'].includes(color))
         return <Button {...props} color={color} />;
@@ -116,3 +97,30 @@ export default HOCMuiButton;
 
 export let BackButton = ({history})=><HOCMuiButton onClick={()=>history.goBack()} variant='outlined' color='info'>Back</HOCMuiButton>;
 BackButton = withRouter(BackButton);
+
+
+
+
+
+
+
+// hook method
+/*const useStyles = makeStyles(theme=>theme.buttonStyles);
+export const HookMuiButton = ({color, ...other}) =>{
+    const classes = useStyles({color});
+    return <Button classes={classes} {...other} />;
+    //return <Button classes={{root:classes.root, label: 'myLabel'}} {...other} />;
+};*/
+
+// styled method
+//const StyledMuiButton1 = styled(({color, ...other})=><Button {...other} />)(theme.buttonStyles.root);
+/*export const StyledMuiButton = styled(({color, className, ...other})=>{
+    return <Button classes={{root:className}} {...other} />;
+})(
+    ({theme, color, ...other})=>{
+        const styles = theme.buttonStyles.root;
+        const background = styles.background({color});
+        const boxShadow = styles.boxShadow({color});
+        return {...styles, background, boxShadow};
+    }
+);*/

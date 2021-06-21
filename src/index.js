@@ -12,7 +12,6 @@ import { Provider as ReduxProvider } from 'react-redux';
 import store from './redux/configureStore';
 import {languageContext} from 'constants/contexts';
 import i18n from "./i18n";
-import "./components/ts/example";
 import {setLocale} from "yup";
 import { createBrowserHistory } from "history";
 import {clearAll} from "pages/duck";

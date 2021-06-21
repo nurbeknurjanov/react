@@ -17,8 +17,8 @@ export const ProtectedRoute = ({roles, ...props})=>{
 
     const {authorizedUser} = useSelector(state => state.common);
 
-    //I will get here the role of authenticated user
-    //then will check that with comparing
+    //I get there the role of authenticated user
+    //then will check
     //if(roles.includes(authorizedUser.role))
     if(authorizedUser)
         return <Route {...props} />;
@@ -28,5 +28,4 @@ export const ProtectedRoute = ({roles, ...props})=>{
 
 ProtectedRoute.propTypes = {
     roles: PropTypes.arrayOf(PropTypes.oneOf(['admin'])),
-    //redirectPath: PropTypes.string.isRequired,
 };

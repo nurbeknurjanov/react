@@ -1,6 +1,6 @@
 import React, {useContext, useLayoutEffect} from "react";
 import {withRouter} from "react-router";
-import {ErrorMessage, Field, Form, Formik} from "formik";
+import { Form, Formik} from "formik";
 import * as Yup from "yup";
 import i18n from "../i18n";
 import {withNamespaces} from "react-i18next";
@@ -15,6 +15,8 @@ import {globalContext} from "constants/contexts";
 import {connect} from "react-redux";
 import {login} from "api/common";
 import awaitToJs from "await-to-js";
+import {TextField} from "@material-ui/core";
+import Button from 'components/standard/button';
 
 let Login = ({t, dispatch, history, location})=>{
     const fromLocation = location.state && location.state.fromLocation;
@@ -51,11 +53,12 @@ let Login = ({t, dispatch, history, location})=>{
     }
 
     useLayoutEffect(()=>{
-        dispatch(setTitle('Login'));
-        dispatch(setBreadcrumbs(['Login']));
+        const d = dispatch;
+        d(setTitle(t('login')));
+        d(setBreadcrumbs([t('login')]));
         return ()=>{
-            dispatch(clearTitle());
-            dispatch(clearBreadcrumbs());
+            d(clearTitle());
+            d(clearBreadcrumbs());
         }
     },[dispatch, history]);
 
@@ -66,21 +69,40 @@ let Login = ({t, dispatch, history, location})=>{
             validationSchema={schema}
             onSubmit={onSubmit}
         >
-            {({ errors, touched, values:{status} }) => {
+            {({ errors, touched, values,
+                  handleChange, handleBlur }) => {
                 return   <Form>
-                    <fieldset>
-                        <legend>{t('email')}</legend>
-                        <Field name="email" />
-                        <ErrorMessage name="email" component='div' />
-                    </fieldset>
 
-                    <fieldset>
-                        <legend>{t('password')}</legend>
-                        <Field name="password" type='password' />
-                        <ErrorMessage name="password" component='div' />
-                    </fieldset>
+                    <TextField
+                        name='email'
+                        label={t('email')}
+                        value={values.email}
+                        helperText={touched.email ? errors.email : ""}
+                        error={touched.email && Boolean(errors.email)}
+
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        margin="dense"
+                        variant="outlined"
+                    />
+
                     <br/>
-                    <button type="submit">{t('submit')}</button>
+
+                    <TextField
+                        type='password'
+                        name='password'
+                        label={t('password')}
+                        value={values.password}
+                        helperText={touched.password ? errors.password : ""}
+                        error={touched.password && Boolean(errors.password)}
+
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        margin="dense"
+                        variant="outlined"
+                    />
+                    <br/>
+                    <Button type="submit" color='success' variant='outlined'>{t('submit')}</Button>
                 </Form>;
             }}
         </Formik>

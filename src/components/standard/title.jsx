@@ -3,13 +3,7 @@ import {connect} from "react-redux";
 import PropTypes from 'prop-types';
 import {Typography} from "@material-ui/core";
 
-let Title = ({title})=>{
-    return <>
-        <Typography variant='h1'>{title}</Typography>
-        {/*<Typography color={'secondary'}>{title}</Typography>*/}
-        {/*<Typography variant='body2'>{title}</Typography>*/}
-    </>;
-};
+let Title = ({title})=><Typography variant='h1'>{title}</Typography>;
 Title.propTypes = {
     title: PropTypes.string
 };
