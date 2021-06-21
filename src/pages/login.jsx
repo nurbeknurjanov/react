@@ -51,16 +51,16 @@ let Login = ({t, dispatch, history, location})=>{
             }
         }
     }
-
+    const title = t('login');
     useLayoutEffect(()=>{
         const d = dispatch;
-        d(setTitle(t('login')));
-        d(setBreadcrumbs([t('login')]));
+        d(setTitle(title));
+        d(setBreadcrumbs([title]));
         return ()=>{
             d(clearTitle());
             d(clearBreadcrumbs());
         }
-    },[dispatch, history, t]);
+    },[dispatch, history,title ]);
 
     return <div>
 

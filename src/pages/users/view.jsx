@@ -22,8 +22,6 @@ const useStyles = makeStyles({
     },
 });
 
- 
-
 function DenseTable({user}) {
     const fields = Object.keys(user || {});
     const classes = useStyles();

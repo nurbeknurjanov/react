@@ -23,7 +23,6 @@ history.listen((location, action) => {
 });
 const push = history.push;
 const replace = history.replace;
-//если меняется роутер, то вставляется значение в i18n потом в контекст
 ReactDOM.render(
   <React.StrictMode>
       <ReduxProvider store={store}>
@@ -32,7 +31,7 @@ ReactDOM.render(
                   {defaultLanguage => <Route path="/:language" >
                       {({match, location})=>{
                           let lang = defaultLanguage;
-                          const loc = {...location};//иначе ссылка
+                          const loc = {...location};
                           if(match && match.params && (match.params.language==='ru' || match.params.language==='en')){
                               lang = match.params.language;
                               loc.pathname = loc.pathname.replace('/'+lang, '');
@@ -56,6 +55,8 @@ ReactDOM.render(
                           const Temp = ()=>{
                               useEffect(()=>{
                                   i18n.changeLanguage(lang);
+
+                                  //globally set validation message translations
                                   setLocale({
                                       mixed: {
                                           required: i18n.t('validate.required')

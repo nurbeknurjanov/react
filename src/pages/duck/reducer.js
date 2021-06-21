@@ -139,11 +139,6 @@ const reducer = function reducer(state = initialState, action) {
                 count: state.count+1
             }
         }
-        case 'test':{
-            return { ...state,
-                test: 10
-            }
-        }
         default:
             return state;
     }

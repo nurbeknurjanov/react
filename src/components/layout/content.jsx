@@ -4,7 +4,6 @@ import {Switch, Route} from "react-router-dom";
 import Error from "../../pages/error";
 import Home from "../../pages/home";
 
-import Context from "../../pages/tutorial/context";
 import Login from "../../pages/login";
 import Simple from "../../pages/simple";
 import Test from "../../pages/test";
@@ -53,15 +52,10 @@ let Content = ({dispatch, commonError, location, history})=>{
                     return 'Another Component'
                 }} />
 
-                <Route path="/sidebar" children={'Sidebar Component'} />{/*можно, потому что как рендер*/}
-                <Route path="/context" component={Context} />
-
                 <GuestRoute path="/login" component={Login} />
 
 
-                <Route path="/Test" children={<Test/>} />
-                <Route path="/simple" children={<Simple/>} />
-                <Route path="/simple" component={Simple} />
+                <Route path="/test" children={<Test/>} />
                 <Route path="/simple" render={({history, location, match, staticContext})=>{
                     return <Simple/>;
                 }} />

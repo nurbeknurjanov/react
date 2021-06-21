@@ -95,9 +95,6 @@ export const clearAll = () => async (dispatch, getState)=>{
     dispatch({type:ActionTypes.CLEAR_FLASHES});
 };
 
-export const testAction = () => ({
-    type: 'test',
-});
 
 
 

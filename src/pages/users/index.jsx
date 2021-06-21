@@ -65,7 +65,6 @@ const Status = ({status})=>{
         justifyContent:'space-between',
     }
 }));*/
-
 let Filters = ({location, history, onStatusChange, classes})=>{
     //const classes = useStyles();
     const filterRef = useRef();
@@ -277,8 +276,9 @@ Users.propTypes = {
 }
 
 let UsersContainer = ({location, d, t})=>{
+    const title = t('users');
     useLayoutEffect(()=>{
-        d(setTitle(t('users')));
+        d(setTitle(title));
         d(addButton(<Button variant="contained"
                             color="success"
                             startIcon={<AddIcon/>}
@@ -287,19 +287,15 @@ let UsersContainer = ({location, d, t})=>{
                             }
         >{t('user.create')}</Button>));
         d(setBreadcrumbs([
-            t('users')
+            title
         ]));
-    },[d, t]);
+    },[d, title]);
 
     const [users, setUsers] = useState([]);
     const [status, setStatus] = useState();
     const [paginationParams, setPaginationParams] = useState();
 
     const query = new URLSearchParams(location.search);
-    //page надо здесь писать, потому что если писать внутри эффектов,
-    //page будет со старым значением, потому что он не реактивный
-    //внутри эффектов надо писать другие реактивные стейты
-    //или вызов хистори редиректы
     const pageValue = Number(query.get('page')) || 1;
     const perPageValue = Number(query.get('per-page')) || 10;
     const filterValue = query.get('filter');

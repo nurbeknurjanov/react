@@ -39,7 +39,6 @@ const GreenFormLabel = withStyles({
 })(FormLabel);
 const GreenRadio = withStyles({
     root: {
-        //color: green[400],
         '&$checked': {
             color: green[600],
         },
@@ -73,8 +72,6 @@ let UserUpdate = ({t, dispatch, user, handleClose, history})=>{
     });
 
     async function onSubmit(values, {setSubmitting}){
-        //alert(JSON.stringify(values));
-        //setSubmitting(false);
         const [err] = await awaitToJs(updateUser(user.id, values));
         if(err)
             return dispatch(setAlert('error', err.message));
@@ -122,16 +119,7 @@ let UserUpdate = ({t, dispatch, user, handleClose, history})=>{
                                 <FormHelperText>
                                     {touched.email ? errors.email : ""}
                                 </FormHelperText>
-                                {/*<ErrorMessage name='email' component={FormHelperText} />*/}
                             </FormControl>
-
-
-
-                            {/*<fieldset>
-                            <legend>{t('email')}</legend>
-                            <Field name="email" />
-                            <ErrorMessage name="email" />
-                        </fieldset>*/}
 
 
                             <TextField

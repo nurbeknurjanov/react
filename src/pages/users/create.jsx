@@ -1,7 +1,6 @@
 import React, {useLayoutEffect} from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from "yup";
-//import Form from '../../components/tutorial/formik/depend';
 
 import {withNamespaces} from "react-i18next";
 import i18n from "../../i18n";
@@ -25,14 +24,11 @@ import {
 } from '@material-ui/core';
 import {withStyles} from "@material-ui/core/styles";
 import {green} from "@material-ui/core/colors";
-/*import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/date-fns';*/
 
 /* eslint-disable no-template-curly-in-string */
 
 const GreenRadio = withStyles({
     root: {
-        //color: green[400],
         '&$checked': {
             color: green[600],
         },
@@ -57,23 +53,23 @@ for(let i=18; i<=90; i++)
 
 
 const initialValues = {
-    name: 'New guy',
-    age: 20,
-    status: UserStatus.ZERO_VALUE_REQUIRED,
-    email:'new@mail.ru',
+    /*email:'new@mail.ru',
     password:'123456',
+    name: 'New guy',
+    age: 20,*/
+    status: UserStatus.ZERO_VALUE_REQUIRED,
 };
 
 let UserCreate = ({t, dispatch, history})=>{
-
+    const title = t('user.create');
     useLayoutEffect(()=>{
-        dispatch(setTitle(t('user.create')));
+        dispatch(setTitle(title));
         dispatch(addButton(<BackButton/>));
         dispatch(setBreadcrumbs([
             {label:t('users'), to:'/users'},
-            t('user.create')
+            title
         ]));
-    },[dispatch, t]);
+    },[dispatch, title]);
 
     const schema = Yup.object().shape({
         /*name: Yup.string()
@@ -97,8 +93,6 @@ let UserCreate = ({t, dispatch, history})=>{
     });
 
     async function onSubmit(values, {setSubmitting}){
-        //alert(JSON.stringify(values));
-        //setSubmitting(false);
         const [err, user] = await awaitToJs(createUser(values));
         if(err)
             return dispatch(setAlert('error', err.message));
@@ -145,12 +139,6 @@ let UserCreate = ({t, dispatch, history})=>{
                         fullWidth
                     />
 
-                    {/*<fieldset>
-                        <legend>{t('email')}</legend>
-                        <Field name="email" />
-                        <ErrorMessage name="email" />
-                    </fieldset>*/}
-
                     <TextField
                         name='password'
                         label={t('password')}
@@ -190,7 +178,6 @@ let UserCreate = ({t, dispatch, history})=>{
                     <FormControl component="fieldset" margin='dense'>
                         <GreenFormLabel component="legend">{t('status')}</GreenFormLabel>
                         <RadioGroup name="status" value={values.status} onChange={handleChange}>
-
                             {
                                 Object.entries(USER_STATUS_LABELS).map(obj => {
                                     const key   = obj[0];
@@ -198,11 +185,8 @@ let UserCreate = ({t, dispatch, history})=>{
                                     return <FormControlLabel  checked={key===String(values.status)}  key={key} value={key} control={<GreenRadio />} label={label} />;
                                 })
                             }
-
                         </RadioGroup>
                     </FormControl>
-
-
 
                     <br/>
                     <Button type="submit" variant="contained" color='success'>{t('create')}</Button>
