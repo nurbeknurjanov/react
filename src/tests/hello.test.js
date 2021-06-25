@@ -11,6 +11,8 @@ it("renders as guest", () => {
     });
     expect(container.textContent).toBe("Hey, stranger");
 });
+
+
 it("renders as user", () => {
     act(() => {
         render(<Hello name="Jenny" />, container);
