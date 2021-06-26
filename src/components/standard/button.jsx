@@ -6,6 +6,8 @@ import {fade} from "@material-ui/core/styles/colorManipulator";
 import {theme} from "styles/material_styles";
 import {withRouter} from "react-router";
 import {withNamespaces} from "react-i18next";
+import {useSelector} from "react-redux";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 //eslint-disable-next-line no-extend-native
 String.prototype.capitalize = function() {
@@ -74,8 +76,7 @@ colors.forEach(color=>{
 });
 
 
-// HOC method
-const HOCMuiButton = withStyles(theme=>theme.buttonStyles)(({ classes, color, buttonRef, ...props }) =>{
+const ColoredMuiButton = withStyles(theme=>theme.buttonStyles)(({ classes, color, buttonRef, ...props }) =>{
     if(['primary', 'secondary', 'default'].includes(color))
         return <Button {...props} color={color} ref={buttonRef}/>;
 
@@ -88,17 +89,23 @@ const HOCMuiButton = withStyles(theme=>theme.buttonStyles)(({ classes, color, bu
     return <Button classes={classNames} {...props} ref={buttonRef} />;
 });
 
-HOCMuiButton.propTypes = {
+ColoredMuiButton.propTypes = {
     color: PropTypes.oneOf(['success', 'danger', 'error', 'warning', 'info', 'neutral',
         'primary', 'secondary', 'default']),
 }
-const HOCMuiButtonForwardRef = React.forwardRef((props, ref)=><HOCMuiButton {...props} buttonRef={ref}/>)
-export default HOCMuiButtonForwardRef;
+const ColoredMuiButtonForwardRef = React.forwardRef((props, ref)=><ColoredMuiButton {...props} buttonRef={ref}/>)
+export default ColoredMuiButtonForwardRef;
 
 
-export let BackButton = ({history, t})=><HOCMuiButton onClick={()=>history.goBack()} variant='outlined' color='info'>{t('Back')}</HOCMuiButton>;
+export let BackButton = ({history, t})=><ColoredMuiButton onClick={()=>history.goBack()} variant='outlined' color='info'>{t('Back')}</ColoredMuiButton>;
 BackButton = withRouter(BackButton);
 BackButton = withNamespaces()(BackButton);
+
+export const SubmitButton = props=>{
+    const loading = useSelector(state => state.common.loading);
+    return <ColoredMuiButton type='submit'  startIcon={loading && <CircularProgress size={20} color='inherit' />} {...props} />;
+};
+
 
 
 

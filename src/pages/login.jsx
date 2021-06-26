@@ -16,7 +16,7 @@ import {connect} from "react-redux";
 import {login} from "api/common";
 import awaitToJs from "await-to-js";
 import {TextField} from "@material-ui/core";
-import Button from 'components/standard/button';
+import {SubmitButton} from 'components/standard/button';
 
 let Login = ({t, dispatch, history, location})=>{
     const fromLocation = location.state && location.state.fromLocation;
@@ -105,7 +105,7 @@ let Login = ({t, dispatch, history, location})=>{
                         variant="outlined"
                     />
                     <br/>
-                    <Button type="submit" color='success' variant='outlined'>{t('submit')}</Button>
+                    <SubmitButton color='success' variant='outlined'>{t('submit')}</SubmitButton>
                 </Form>;
             }}
         </Formik>
