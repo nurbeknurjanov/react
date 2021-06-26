@@ -276,19 +276,19 @@ Users.propTypes = {
 }
 
 let UsersContainer = ({location, d, t})=>{
-    const title = t('users');
+
     useLayoutEffect(()=>{
-        d(setTitle(title));
+        d(setTitle(t('users')));
         d(addButton(<Button variant="contained" color="success" startIcon={<AddIcon/>}
                             component={
                                 React.forwardRef((props, ref) => <Link {...props} ref={ref} to={'/users/create'} />)
                             }
         >{t('user.create')}</Button>));
         d(setBreadcrumbs([
-            title
+            t('users')
         ]));
         return ()=>d(clearAll());
-    },[d, title]);
+    },[d, t]);
 
     const [users, setUsers] = useState([]);
     const [status, setStatus] = useState();

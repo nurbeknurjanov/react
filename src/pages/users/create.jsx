@@ -57,6 +57,7 @@ const initialValues = {
     password:'123456',
     name: 'New guy',
     age: 20,*/
+    age:'',
     status: UserStatus.ZERO_VALUE_REQUIRED,
 };
 
@@ -70,7 +71,7 @@ let UserCreate = ({t, dispatch, history})=>{
             title
         ]));
         return ()=>dispatch(clearAll());
-    },[dispatch, title]);
+    },[dispatch, title, t]);
 
     const schema = Yup.object().shape({
         /*name: Yup.string()
