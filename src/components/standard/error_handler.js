@@ -1,5 +1,5 @@
 import React from "react";
-import {globalContext} from "constants/contexts";
+import {globalContext} from "../../constants/contexts";
 
 class ErrorHandler extends React.Component {
     constructor(props) {

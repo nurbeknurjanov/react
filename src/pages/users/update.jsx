@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik';
 import * as Yup from "yup";
 import {withNamespaces} from "react-i18next";
 import i18n from "../../i18n";
-import {USER_STATUS_LABELS} from 'constants/user';
+import {USER_STATUS_LABELS} from '../../constants/user';
 import {updateUser} from "api/users";
 import {
     setAlert,

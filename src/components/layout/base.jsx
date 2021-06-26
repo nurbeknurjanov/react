@@ -4,7 +4,7 @@ import Main from "./main";
 import Main2 from "./main2";
 import Header from "./header";
 import {connect} from "react-redux";
-import {globalContext} from "constants/contexts";
+import {globalContext} from "../../constants/contexts";
 import {deleteCookie, getCookie, setCookie} from "helper/cookie";
 import {setAuthorizedUserAction, initApplication as initApplicationAction, addFlash} from "pages/duck";
 import ErrorHandler from "components/standard/error_handler";

@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {languageContext} from "constants/contexts";
+import {languageContext} from "../../constants/contexts";
 import {connect} from "react-redux";
 import {withRouter, Link as RouterLink} from "react-router-dom";
 import {deleteCookie} from "helper/cookie";

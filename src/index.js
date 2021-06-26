@@ -10,7 +10,7 @@ import {
 } from "react-router";
 import { Provider as ReduxProvider } from 'react-redux';
 import store from './redux/configureStore';
-import {languageContext} from 'constants/contexts';
+import {languageContext} from './constants/contexts';
 import i18n from "./i18n";
 import {setLocale} from "yup";
 import { createBrowserHistory } from "history";

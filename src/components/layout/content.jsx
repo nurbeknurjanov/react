@@ -13,7 +13,7 @@ import UserView from "../../pages/users/view";
 import {ProtectedRoute, GuestRoute} from "components/standard/route";
 import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
-import {globalContext} from "constants/contexts";
+import {globalContext} from "../../constants/contexts";
 import Mui from 'pages/mui';
 //const UserCreate = React.lazy(() => import("../../pages/users/create"));
 const UserCreate = React.lazy( () => {

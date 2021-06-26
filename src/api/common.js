@@ -1,6 +1,6 @@
 import {LoginPost} from "api/proto/generated/common_messages_pb";
 import {CommonClient, CommonPromiseClient} from "api/proto/generated/common_services_grpc_web_pb";
-import {ENVOY_URL} from "constants/urls";
+import {ENVOY_URL} from "../constants/urls";
 import { Empty } from 'google-protobuf/google/protobuf/empty_pb';
 import { promisify } from 'es6-promisify';
 

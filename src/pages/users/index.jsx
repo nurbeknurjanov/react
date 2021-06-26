@@ -5,7 +5,7 @@ import {
     setBreadcrumbs, setError,
     setTitle, startLoading
 } from "../duck";
-import { USER_STATUS_LABELS, UserStatus } from "constants/user";
+import { USER_STATUS_LABELS, UserStatus } from "../../constants/user";
 import {withRouter, Link as RouterLink} from "react-router-dom";
 import Pagination from "components/standard/pagination";
 import PropTypes from "prop-types";

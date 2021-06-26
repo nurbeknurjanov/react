@@ -3,7 +3,7 @@ import { UserRequest, FilterParams,
     UserPostUpdate,
     PaginationRequest, UsersRequest } from "./proto/generated/users_messages_pb";
 import {UsersClient, UsersPromiseClient} from "./proto/generated/users_services_grpc_web_pb";
-import {ENVOY_URL} from "constants/urls";
+import {ENVOY_URL} from "../constants/urls";
 import { promisify } from 'es6-promisify';
 import {getCookie} from "helper/cookie";
 //import { Empty } from 'google-protobuf/google/protobuf/empty_pb';

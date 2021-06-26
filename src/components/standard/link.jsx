@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {Link as RouterLink} from "react-router-dom";
 import {Link as MuiLink} from "@material-ui/core";
-import {languageContext} from "constants/contexts";
+import {languageContext} from "../../constants/contexts";
 
 export const addLanguageToUrl = (to, language)=>{
     let url = '/';

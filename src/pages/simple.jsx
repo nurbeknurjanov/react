@@ -1,5 +1,5 @@
 import React, {useEffect, useLayoutEffect} from "react";
-import {globalContext} from "constants/contexts";
+import {globalContext} from "../constants/contexts";
 import {addButton, clearAll, setBreadcrumbs, setTitle} from "pages/duck";
 import {useDispatch} from "react-redux";
 import {BackButton} from 'components/standard/button';

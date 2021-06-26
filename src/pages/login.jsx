@@ -6,12 +6,12 @@ import i18n from "../i18n";
 import {withNamespaces} from "react-i18next";
 import {
     clearBreadcrumbs,
-    clearTitle, setAlert,
+    clearTitle, endLoading, setAlert,
     setBreadcrumbs,
-    setTitle
+    setTitle, startLoading
 } from "pages/duck";
 import {setCookie} from "helper/cookie";
-import {globalContext} from "constants/contexts";
+import {globalContext} from "../constants/contexts";
 import {connect} from "react-redux";
 import {login} from "api/common";
 import awaitToJs from "await-to-js";
@@ -38,18 +38,21 @@ let Login = ({t, dispatch, history, location})=>{
     const onSubmit = async (values, {setSubmitting}) => {
         //alert(JSON.stringify(values));
         //setSubmitting(false);
+        dispatch(startLoading());
         const [err, refreshToken] = await awaitToJs(login(values));
-        if(err){
+        if(err)
             dispatch(setAlert('error', err.message));
-        }
+
         if(refreshToken){
             setCookie('refresh-token', refreshToken);
             const accessToken = await getAccessToken(refreshToken);
             if(accessToken){
                 await setAuthorizedUser(accessToken);
+                dispatch(endLoading());
                 history.push( fromLocation ? fromLocation: '/');
             }
         }
+        dispatch(endLoading());
     }
     const title = t('login');
     useLayoutEffect(()=>{
